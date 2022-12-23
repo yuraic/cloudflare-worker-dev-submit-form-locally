@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link
+        href='https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Montserrat:100,200,300,300i,400,500,600,700,800,900|Lato:300,400|Crimson+Text:400,400i,600'
+        rel='stylesheet' type='text/css'>
+    <title>Submit Form from a Local File Example or localhost</title>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="text-center" id="submitSection">
+
+                </div>
+
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>Note:</h3>
+                    <p>You can invoke this webpage on <b>localhost</b> or locally from file. It will work either way.</p>
+                    <p>
+                    <ul>
+                        <li>
+                            <b>localhost</b>
+                            <ol>
+                                <li>
+                                    Install simple NodeJS web-server from here <a
+                                        href="https://www.npmjs.com/package/http-server">https://www.npmjs.com/package/http-server</a>.
+                                    <br>Namely, <span style="background-color: lightgrey;">npm install
+                                        http-server</span>
+                                </li>
+                                <li>
+                                    Run webserver from the <b>src/webpage</b> folder, <span
+                                        style="background-color: lightgrey;">npx http-server .</span>
+                                </li>
+                                <li>
+                                    Run wragnler worker from the <b>package root folder</b>, <span
+                                        style="background-color: lightgrey;">wrangler dev</span>; Must be running at <a href="http://127.0.0.1:8787">http://127.0.0.1:8787</a> (if not, make appropriate changes in the html code)
+                                </li>
+                                <li>
+                                    Open in browser, <a
+                                        href="http://127.0.0.1:8080/submit_form.html">http://127.0.0.1:8080/submit_form.html</a>
+                                    or whatever your local ip and port are.
+                                </li>
+                                <li>
+                                    Submit form and Enjoy!
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li>
+                            <b>local file</b>
+                            <ol>
+                                <li>
+                                    Run wragnler worker from the <b>package root folder</b>, <span
+                                        style="background-color: lightgrey;">wrangler dev</span>; Must be running at <a href="http://127.0.0.1:8787">http://127.0.0.1:8787</a> (if not, make appropriate changes in the html code)
+                                </li>
+                                <li>
+                                    Open <b>submit_form.html</b> in browser from the <b>src/webpage</b> folder
+                                </li>
+                                <li>
+                                    Submit form and Enjoy!
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="text-center" id="submitSection">
+                    <h2>Submit form</h2>
+                </div>
+
+                <div class="col-md-8 col-md-offset-2">
+                    <div id="alertBox">
+                        <!-- <div class="alert alert-success alert-dismissible " role="alert" id="success-alert"
+                            style="display:block">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            The message was sent!
+                        </div> -->
+                    </div>
+
+                    <div id="contact-form">
+                        <form data-toggle="validator" role="form" id="form">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Name<span
+                                        style="color:#cc0000;">*</span></label>
+                                <input type="text" class="form-control" id="inputName" name="inputName"
+                                    placeholder="Alan Greenspan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="control-label">Email<span
+                                        style="color:#cc0000;">*</span></label>
+                                <input type="email" class="form-control" id="inputEmail" name="inputEmail"
+                                    placeholder="Email" data-error="Email address is invalid" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputMessage" class="control-label">Message<span
+                                        style="color:#cc0000;">*</span></label>
+                                <textarea cols="40" rows="10" id="inputMessage" name="inputMessage" data-minlength="10"
+                                    class="form-control" placeholder="How can we help you?" required></textarea>
+                                <div class="help-block with-errors"></div>
+                                <div class="help-block">Minimum of 10 characters</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="terms"
+                                            data-error="You need to check this box to proceed" required>
+                                        I have read and agree to example.com's <a href="/privacy">Privacy Policy</a>.
+                                    </label>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load Scripts -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"
+        integrity="sha512-dTu0vJs5ndrd3kPwnYixvOCsvef5SGYW/zSSK4bcjRBcZHzqThq7pt7PmCv55yb8iBvni0TSeIDV8RYKjZL36A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Submit Code -->
+
+    <script type="text/javascript">
+
+        $('#form').validator().on('submit', function (e) {
+
+            $("#alertBox").empty();
+
+            // hook in validation
+            if (e.isDefaultPrevented()) {
+                //contains errors
+                // alert("Bad!");
+
+            } else {
+                // no errors
+                // alert("Good!");
+
+                var form = document.querySelector('form');
+                var formData = new FormData(form);
+
+                const XHR = new XMLHttpRequest();
+
+                // Define what happens on successful data submission
+                XHR.addEventListener('load', (event) => {
+                    $("#alertBox").append('<div class="alert alert-success alert-dismissible show" role="alert" id="success-alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Your message has been sent!</div>');
+
+                    $('#submitBtn').prop('disabled', false); // endable the submit button
+
+                    // scroll uo to show alert messages
+                    var alerts = $('#alertBox');
+                    var submitSection = $('#submitSection');
+                    if (alerts.length) {
+                        $('html, body').animate({ scrollTop: submitSection.offset().top }, 500);
+                    }
+                });
+
+                // Define what happens in case of an error
+                XHR.addEventListener('error', (event) => {
+                    $("#alertBox").append('<div class="alert alert-danger alert-dismissible show" role="alert" id="danger-alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Error - Your message has NOT been sent</div>');
+
+                    $('#submitBtn').prop('disabled', false); // endable the submit button
+
+                    // scroll uo to show alert messages
+                    var alerts = $('#alertBox');
+                    var submitSection = $('#submitSection');
+                    if (alerts.length) {
+                        $('html, body').animate({ scrollTop: submitSection.offset().top }, 500);
+                    }
+                });
+
+                // Set up our request
+                XHR.open('POST', 'http://127.0.0.1:8787/');
+
+                // Send our FormData object; HTTP headers are set automatically
+                XHR.send(formData);
+
+                $("#submitBtn").blur(); // remove focus form the submit button
+                $('#submitBtn').prop('disabled', true); // disable the submit button
+
+                e.preventDefault();
+
+
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
