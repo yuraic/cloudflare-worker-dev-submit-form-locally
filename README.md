@@ -37,5 +37,11 @@ Ping me if there is any problem with the code. Hopefully I'll have time to help 
 
 
 
+### Acknowledgement
+
+Thanks to PierBover here, https://github.com/cloudflare/wrangler/issues/1262
+
+
+
 
 
